@@ -5,6 +5,8 @@ import ThirdSection from '../../components/Home/ThirdSection'
 import FourthSection from '../../components/Home/FourthSection'
 import FifthSection from '../../components/Home/FifthSection'
 import SixthSection from '../../components/Home/SixthSection'
+import Container from '../../components/Container'
+import CommonFooter from '../../components/CommonFooter'
 
 const Home = () => {
   return (
@@ -31,6 +33,9 @@ const Home = () => {
       <div className="w-full relative">
         <SixthSection />
       </div>
+      <Container>
+        <CommonFooter />
+      </Container>
     </div>
   )
 }

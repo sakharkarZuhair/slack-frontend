@@ -77,7 +77,9 @@ const FifthSection = () => {
 const Card = ({ image, link, linkDesc, title, type }: CardDataProps) => {
   return (
     <div className="bg-white p-4 rounded-sm h-[420px] relative hover:scale-105 transition-transform duration-300">
-      <Image src={image} className="w-full h-[208px] object-cover" />
+      <div className='h-[208px]'>
+        <Image src={image} className="w-full h-full object-cover" />
+      </div>
       <div>
         <p className="text-sm text-tertiary mt-4">{type}</p>
         <Typography className="mt-4" variant="h2" size="xl" weight="bold">
@@ -85,7 +87,9 @@ const Card = ({ image, link, linkDesc, title, type }: CardDataProps) => {
         </Typography>
         <div className="absolute bottom-2 w-full left-0 px-4">
           <div className="flex items-center justify-between w-full">
-            <Link className='text-blue-500 text-base' to={link}>{linkDesc}</Link>
+            <Link className="text-blue-500 text-base" to={link}>
+              {linkDesc}
+            </Link>
             <div className="text-blue-500 text-[28px]">
               <IoIosArrowRoundForward size={28} />
             </div>

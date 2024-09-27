@@ -20,6 +20,8 @@ import cardThree from './JPG/card-three.jpg'
 import cardFour from './JPG/card-four.jpg'
 import curve from './SVG/curve.svg'
 
+import slackSoloLogo from './SVG/salck-solo-logo.svg'
+
 export {
   slackLogo,
   airBnb,
@@ -38,4 +40,5 @@ export {
   cardThree,
   cardFour,
   curve,
+  slackSoloLogo,
 }
