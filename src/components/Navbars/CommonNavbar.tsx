@@ -16,10 +16,12 @@ const CommonNavbar = () => {
         </div>
         <div className="flex items-center">
           <Search />
-          <div className='flex items-center gap-6'>
-            <Button variant="link">Sign in</Button>
-            <Button variant='outline'>TALK TO SALES</Button>
-            <Button variant='primary'>GET STARTED</Button>
+          <div className="flex items-center gap-6">
+            <Button variant="link">
+              <Link to={'/register'}>Sign in</Link>
+            </Button>
+            <Button variant="outline">TALK TO SALES</Button>
+            <Button variant="primary">GET STARTED</Button>
           </div>
         </div>
       </section>

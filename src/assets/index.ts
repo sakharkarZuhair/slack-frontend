@@ -21,6 +21,7 @@ import cardFour from './JPG/card-four.jpg'
 import curve from './SVG/curve.svg'
 
 import slackSoloLogo from './SVG/salck-solo-logo.svg'
+import slackRegister from './SVG/register-slack.svg'
 
 export {
   slackLogo,
@@ -41,4 +42,5 @@ export {
   cardFour,
   curve,
   slackSoloLogo,
+  slackRegister,
 }

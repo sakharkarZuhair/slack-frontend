@@ -1,42 +1,41 @@
 import { useEffect, useState } from 'react'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Channel from './pages/Channel/Channel'
 import Feature from './pages/Features/Feature'
 import Register from './pages/Register/Register'
 import MainLayout from './layouts/MainLayout'
+
 function App() {
-  // const location = useLocation()
-  // console.log('LOCATION', window.location?.pathname)
+  const location = useLocation()
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
   const [isRegisterPage, setIsRegisterPage] = useState<boolean>(false)
 
   useEffect(() => {
-    if (window.location?.pathname == '/register') {
+    if (location.pathname === '/register') {
       setIsLoggedIn(false)
       setIsRegisterPage(true)
+    } else {
+      setIsRegisterPage(false)
     }
-  }, [])
-
-  // const handleLogin = () => setIsLoggedIn(true)
-  // const handleLogout = () => setIsLoggedIn(false)
+  }, [location.pathname])
 
   return (
-    <Router>
-      <MainLayout isLoggedIn={isLoggedIn} isRegisterPage={isRegisterPage}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/feature" element={<Feature />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/channle" element={<Channel />} />
-        </Routes>
-      </MainLayout>
-    </Router>
+    <MainLayout isLoggedIn={isLoggedIn} isRegisterPage={isRegisterPage}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/feature" element={<Feature />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/channle" element={<Channel />} />
+      </Routes>
+    </MainLayout>
   )
 }
 
-export default App
+export default function AppWrapper() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  )
+}
