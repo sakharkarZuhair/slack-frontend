@@ -1,34 +1,59 @@
-import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from 'react-router-dom'
+
 import Home from './pages/Home/Home'
 import Channel from './pages/Channel/Channel'
 import Feature from './pages/Features/Feature'
 import Register from './pages/Register/Register'
 import MainLayout from './layouts/MainLayout'
-import GoogleAuthCallback from './auth/google/callback'
+import ProtectedRoute from './components/ProtectedRoutes'
+import Authentication from './pages/Authentication'
+import { useSelector } from 'react-redux'
+import { RootState } from './store'
+
+const routes = [
+  { path: '/', element: <Home /> },
+  { path: '/feature', element: <Feature /> },
+  { path: '/register', element: <Register /> },
+  { path: '/authentication', element: <Authentication /> },
+  {
+    path: '/channel',
+    element: (
+      <ProtectedRoute>
+        <Channel />
+      </ProtectedRoute>
+    ),
+  },
+]
 
 function App() {
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
   const location = useLocation()
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-  const [isRegisterPage, setIsRegisterPage] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (location.pathname === '/register') {
-      setIsLoggedIn(false)
-      setIsRegisterPage(true)
-    } else {
-      setIsRegisterPage(false)
-    }
-  }, [location.pathname])
 
   return (
-    <MainLayout isLoggedIn={isLoggedIn} isRegisterPage={isRegisterPage}>
+    <MainLayout
+      isLoggedIn={isLoggedIn}
+      isRegisterPage={location.pathname === '/register'}
+    >
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/feature" element={<Feature />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/channle" element={<Channel />} />
-        <Route path="/auth/google/callback" element={<GoogleAuthCallback />} />
+        {routes.map(({ path, element }) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              path !== '/channel' && isLoggedIn ? (
+                <Navigate to="/channel" replace />
+              ) : (
+                element
+              )
+            }
+          />
+        ))}
       </Routes>
     </MainLayout>
   )

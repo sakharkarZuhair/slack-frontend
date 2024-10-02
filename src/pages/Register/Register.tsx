@@ -1,17 +1,18 @@
+import { Link } from 'react-router-dom'
+import { BsStars } from 'react-icons/bs'
 import { FcGoogle } from 'react-icons/fc'
-import { slackRegister } from '../../assets'
-import Image from '../../components/Image'
-import PassportButton from '../../components/PassportButton'
-import Typography from '../../components/Typography'
 import { FaGithub } from 'react-icons/fa'
+import { slackRegister } from '../../assets'
+
+import Image from '../../components/Image'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
-import { BsStars } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import Typography from '../../components/Typography'
+import PassportButton from '../../components/PassportButton'
 
 const Register = () => {
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:4000/api/v1/auth/google' // Adjust the URL to match your backend server
+    window.location.href = 'http://localhost:4000/api/v1/auth/google'
   }
   return (
     <div className="relative flex justify-center items-center m-auto">
