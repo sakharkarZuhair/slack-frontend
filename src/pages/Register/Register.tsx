@@ -10,6 +10,9 @@ import { BsStars } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
 const Register = () => {
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:4000/api/v1/auth/google' // Adjust the URL to match your backend server
+  }
   return (
     <div className="relative flex justify-center items-center m-auto">
       <div className="absolute right-10 top-[70px]">
@@ -36,6 +39,7 @@ const Register = () => {
             <PassportButton
               icon={<FcGoogle size={26} />}
               text="Sign in with google"
+              onClick={handleGoogleLogin}
             />
           </div>
           <div className="w-full">
@@ -75,9 +79,9 @@ const Register = () => {
           </div>
         </div>
         <div className="absolute bottom-[-200px]">
-          <ul className='flex items-center gap-4'>
-            <Links link='/' text='Privacy & Terms' />
-            <Links link='/' text='Contact Us' />
+          <ul className="flex items-center gap-4">
+            <Links link="/" text="Privacy & Terms" />
+            <Links link="/" text="Contact Us" />
           </ul>
         </div>
       </div>
@@ -87,7 +91,7 @@ const Register = () => {
 
 const Links = ({ link, text }: { link: string; text: string }) => {
   return (
-    <li className='text-gray-500 text-sm hover:underline transition-all'>
+    <li className="text-gray-500 text-sm hover:underline transition-all">
       <Link to={link}>{text}</Link>
     </li>
   )

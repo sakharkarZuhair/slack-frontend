@@ -5,6 +5,7 @@ import Channel from './pages/Channel/Channel'
 import Feature from './pages/Features/Feature'
 import Register from './pages/Register/Register'
 import MainLayout from './layouts/MainLayout'
+import GoogleAuthCallback from './auth/google/callback'
 
 function App() {
   const location = useLocation()
@@ -27,6 +28,7 @@ function App() {
         <Route path="/feature" element={<Feature />} />
         <Route path="/register" element={<Register />} />
         <Route path="/channle" element={<Channel />} />
+        <Route path="/auth/google/callback" element={<GoogleAuthCallback />} />
       </Routes>
     </MainLayout>
   )
