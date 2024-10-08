@@ -16,7 +16,7 @@ const Authentication = () => {
 
     if (accessToken && refreshToken) {
       Cookies.set('accessToken', accessToken, {
-        expires: 30 / (60 * 60 * 24),
+        expires: 7,
         secure: true,
         sameSite: 'Strict',
       })
