@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      height: {
+        'calc-screen': 'calc(100vh - 50px)', // Add custom height
+      },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
       },

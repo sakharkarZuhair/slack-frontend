@@ -15,17 +15,29 @@ import ProtectedRoute from './components/ProtectedRoutes'
 import Authentication from './pages/Authentication'
 import { useSelector } from 'react-redux'
 import { RootState } from './store'
+import DirectMessage from './pages/Dms/DirectMessage'
+
+// Define paths that should redirect to "/channel" when the user is logged in
+const redirectPaths = ['/feature', '/register', '/authentication', '/']
 
 const routes = [
   { path: '/', element: <Home /> },
-  { path: '/feature', element: <Feature /> },
   { path: '/register', element: <Register /> },
   { path: '/authentication', element: <Authentication /> },
+  { path: '/feature', element: <Feature /> },
   {
     path: '/channel',
     element: (
       <ProtectedRoute>
         <Channel />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/direct-message',
+    element: (
+      <ProtectedRoute>
+        <DirectMessage />
       </ProtectedRoute>
     ),
   },
@@ -46,7 +58,7 @@ function App() {
             key={path}
             path={path}
             element={
-              path !== '/channel' && isLoggedIn ? (
+              isLoggedIn && redirectPaths.includes(path) ? (
                 <Navigate to="/channel" replace />
               ) : (
                 element
