@@ -9,7 +9,7 @@ import {
 const LoggedInNavbar = () => {
   return (
     <div className="w-full flex items-center m-auto bg-primary-dark h-[50px] p-2 gap-4 z-50">
-      <div className="flex items-center justify-end gap-1 w-[480px]">
+      <div className="flex items-center justify-end gap-1 w-[610px]">
         <IconContainer navigation icon={<IoMdArrowBack size={22} />} />
         <IconContainer navigation icon={<IoMdArrowForward size={22} />} />
         <IconContainer icon={<IoMdTime size={22} />} />
